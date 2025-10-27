@@ -17,3 +17,5 @@ Minio-SQL-connector/abs.yml
 Minio/
 Minio-SQL-connector/rejected/common.js
 Minio-SQL-connector/config.docker.js
+Minio-SQL-connector/config.asus.js
+Minio-SQL-connector/config.msi.js

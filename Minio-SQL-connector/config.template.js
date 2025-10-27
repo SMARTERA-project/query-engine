@@ -9,6 +9,7 @@ module.exports = {
     defaultFileInput: "../../input/inputFile.json",
     defaultOutputFolderName: "private generic data",
     defaultInputFolderName: "data model mapper",
+    defaultBucket: "default",
     subscribe: {
       all: true,
       buckets: []

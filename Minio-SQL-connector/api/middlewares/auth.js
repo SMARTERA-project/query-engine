@@ -45,8 +45,11 @@ module.exports = {
         if (req?.body?.query?.toLowerCase().includes("select * from public-data"))
             req.body.query = req.body.query.replace("SELECT * FROM public-data", "SELECT * FROM publicdata")
 
-        if (authConfig.disableAuth)
+        if (authConfig.disableAuth) {
+            req.body.bucketName = config.minioConfig.defaultBucket || "default"
+            req.body.prefix = config.group = config.minioConfig.defaultInputFolderName
             next()
+        }
 
         else {
             let authHeader = req.headers.authorization;
@@ -105,17 +108,24 @@ module.exports = {
 
                     if ((decodedToken.azp == authConfig.clientId) && ((decodedToken.exp * 1000) > Date.now())) {
 
-                        try {
-                            let data = (await axios.get(config.authConfig.userInfoEndpoint, { headers: { "Authorization": authHeader } })).data
-                            let { pilot, username, email } = data
-                            req.body.bucketName = pilot.toLowerCase() //+ "/" + email + "/" + config.minioConfig.defaultInputFolderName//{pilot, email}
-                            req.body.prefix = (email || username) + "/" + config.minioConfig.defaultInputFolderName
-                            config.group = email || username
-                            logger.debug(req.body.prefix)
-                        }
-                        catch (error) {
-                            logger.error(error?.toString())
-                            logger.error(error?.response?.data || error?.response)
+                        if (config.authConfig.userInfoEndpoint)
+                            try {
+                                let data = (await axios.get(config.authConfig.userInfoEndpoint, { headers: { "Authorization": authHeader } })).data
+                                let { pilot, username, email } = data
+                                req.body.bucketName = pilot.toLowerCase() //+ "/" + email + "/" + config.minioConfig.defaultInputFolderName//{pilot, email}
+                                req.body.prefix = (email || username) + "/" + config.minioConfig.defaultInputFolderName
+                                config.group = email || username
+                                logger.debug(req.body.prefix)
+                            }
+                            catch (error) {
+                                logger.error(error?.toString())
+                                logger.error(error?.response?.data || error?.response)
+                                req.body.bucketName = config.minioConfig.defaultBucket || "default"
+                                req.body.prefix = decodedToken.email
+                                config.group = decodedToken.email
+                            }
+                        else {
+                            req.body.bucketName = config.minioConfig.defaultBucket || "default"
                             req.body.prefix = decodedToken.email
                             config.group = decodedToken.email
                         }
