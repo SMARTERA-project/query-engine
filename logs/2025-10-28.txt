@@ -1,0 +1,60 @@
+[2025-10-28T16:22:10.996Z] [ Object.<anonymous> (/app/index.js:11:8)] [info]
+   csv,json,geojson
+[2025-10-28T16:22:11.021Z] [ Object.<anonymous> (/app/index.js:19:8)] [info]
+   Node.js version: v16.20.2
+[2025-10-28T16:22:11.023Z] [ Server.<anonymous> (/app/index.js:17:32)] [info]
+   Server listens on http://localhost:3000
+[2025-10-28T16:22:11.127Z] [ /app/index.js:18:78] [info]
+   Connected to mongo
+[2025-10-28T16:22:11.229Z] [ sync (/app/api/services/service.js:144:20)] [info]
+   Syncing finished
+[2025-10-28T16:23:42.851Z] [ Object.<anonymous> (/app/index.js:11:8)] [info]
+   csv,json,geojson
+[2025-10-28T16:23:42.877Z] [ Object.<anonymous> (/app/index.js:19:8)] [info]
+   Node.js version: v16.20.2
+[2025-10-28T16:23:42.880Z] [ Server.<anonymous> (/app/index.js:17:32)] [info]
+   Server listens on http://localhost:3000
+[2025-10-28T16:23:42.946Z] [ /app/index.js:18:78] [info]
+   Connected to mongo
+[2025-10-28T16:23:43.040Z] [ sync (/app/api/services/service.js:144:20)] [info]
+   Syncing finished
+[2025-10-28T16:24:12.961Z] [ Object.<anonymous> (/app/index.js:11:8)] [info]
+   csv,json,geojson
+[2025-10-28T16:24:12.982Z] [ Object.<anonymous> (/app/index.js:19:8)] [info]
+   Node.js version: v16.20.2
+[2025-10-28T16:24:12.984Z] [ Server.<anonymous> (/app/index.js:17:32)] [info]
+   Server listens on http://localhost:3000
+[2025-10-28T16:24:13.049Z] [ /app/index.js:18:78] [info]
+   Connected to mongo
+[2025-10-28T16:24:13.160Z] [ sync (/app/api/services/service.js:144:20)] [info]
+   Syncing finished
+[2025-10-28T16:25:53.839Z] [ Object.<anonymous> (/app/index.js:11:8)] [info]
+   csv,json,geojson
+[2025-10-28T16:25:53.860Z] [ Object.<anonymous> (/app/index.js:19:8)] [info]
+   Node.js version: v16.20.2
+[2025-10-28T16:25:53.862Z] [ Server.<anonymous> (/app/index.js:17:32)] [info]
+   Server listens on http://localhost:3000
+[2025-10-28T16:25:53.902Z] [ /app/index.js:18:78] [info]
+   Connected to mongo
+[2025-10-28T16:25:53.984Z] [ sync (/app/api/services/service.js:144:20)] [info]
+   Syncing finished
+[2025-10-28T16:26:28.951Z] [ Object.<anonymous> (/app/index.js:11:8)] [info]
+   csv,json,geojson
+[2025-10-28T16:26:28.982Z] [ Object.<anonymous> (/app/index.js:19:8)] [info]
+   Node.js version: v16.20.2
+[2025-10-28T16:26:28.984Z] [ Server.<anonymous> (/app/index.js:17:32)] [info]
+   Server listens on http://localhost:3000
+[2025-10-28T16:26:29.035Z] [ /app/index.js:18:78] [info]
+   Connected to mongo
+[2025-10-28T16:26:29.081Z] [ sync (/app/api/services/service.js:144:20)] [info]
+   Syncing finished
+[2025-10-28T16:27:42.264Z] [ Object.<anonymous> (/app/index.js:12:8)] [info]
+   csv,json,geojson
+[2025-10-28T16:27:42.289Z] [ Object.<anonymous> (/app/index.js:20:8)] [info]
+   Node.js version: v16.20.2
+[2025-10-28T16:27:42.291Z] [ Server.<anonymous> (/app/index.js:18:32)] [info]
+   Server listens on http://localhost:3000
+[2025-10-28T16:27:42.322Z] [ /app/index.js:19:78] [info]
+   Connected to mongo
+[2025-10-28T16:27:42.379Z] [ sync (/app/api/services/service.js:144:20)] [info]
+   Syncing finished

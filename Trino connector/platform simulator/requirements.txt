@@ -1,7 +1,0 @@
-Flask==2.0.2
-python-keycloak==3.7.0
-werkzeug==2.0.2
-pytz
-trino
-minio
-requests

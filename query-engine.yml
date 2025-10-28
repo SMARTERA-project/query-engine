@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+  minio_SQL_connector:
+    image: engineeringopsilab/minio_sql_connector
+    pull_policy: always
+    build:
+      context: https://github.com/BeOpen-project/minio-sql-connector.git
+      dockerfile: ./minio-sql-connector-dockerfile
+    container_name: minio_sql_connector
+    restart: always
+    ports:
+      - "3000:3000"  
+    volumes:
+      - ./config.docker.js:/app/config.js
+
+ 
