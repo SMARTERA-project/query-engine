@@ -198,13 +198,7 @@ module.exports = {
         log("ERROR searching object in DB");
         log(err);
 
-        //new
-        //this.client.query(queryTable, (err, res) => {
-        //
-
-        //old
         this.client.query("CREATE TABLE  " + table + " (id SERIAL PRIMARY KEY, name TEXT NOT NULL UNIQUE, data JSONB, record JSONB)", (err, res) => {
-          //
 
           if (err) {
             log("ERROR creating table");
@@ -212,17 +206,8 @@ module.exports = {
             postgreFinished = true
             return;
           }
-          //log(common.minify(res))
-
-          //old
+       
           this.client.query(`INSERT INTO ${table} (name, data, record) VALUES ('${record?.s3?.object?.key || record.name}', '${data}', '${JSON.stringify(record)}')`, (err, res) => {
-            //
-
-            //new
-            //this.client.query(`INSERT INTO ${table} (name, ${this.getKeys(queryTable)}, record) VALUES ('${record?.s3?.object?.key || record.name}', ${this.getValues(jsonStringified || common.cleaned(newObject))}, '${JSON.stringify(record)}')`, (err, res) => {
-            //or
-            //this.client.query(`INSERT INTO ${table} (name, ${this.getValues(queryTable)}, record) VALUES ('${record?.s3?.object?.key || record.name}', '${JSON.stringify(jsonStringified || common.cleaned(newObject))}', '${JSON.stringify(record)}')`, (err, res) => {
-            //
 
             if (err) {
               log("ERROR inserting object in DB");

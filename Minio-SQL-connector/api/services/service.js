@@ -42,12 +42,11 @@ async function sync() {
                 let index = 1
                 for (let obj of bucketObjects) {
                     try {
-                        //await sleep(delays)
                         logger.debug("Bucket ", bucketIndex, " of ", buckets.length)
                         logger.debug("Scanning object ", index++, " of ", bucketObjects.length, ",", obj.name)
                         let extension = obj.name.split(".").pop()
                         let isAllowed = (queryAllowedExtensions == "all" || queryAllowedExtensions.includes(extension))
-                        if (obj.size && obj.isLatest && isAllowed) {//} && !obj.isDeleteMarker) {
+                        if (obj.size && obj.isLatest && isAllowed) {
                             let objectGot = await minioWriter.getObject(bucket.name, obj.name, obj.name.split(".").pop())
                             objects.push({ raw: objectGot, info: { ...obj, bucketName: bucket.name } })
                         }
@@ -189,7 +188,7 @@ module.exports = {
         let keys = await Key.find({
             key: { $regex: "^" + search, $options: "i" },
             visibility
-        }, { "key": 1, "_id": 0 })//, { "key": 1, "value": 1, "_id": 0, "visibility":0 })
+        }, { "key": 1, "_id": 0 })
         if (keys.lenght > 500)
             return ["Too many suggestions. Type some characters in order to reduce them"]
         return keys
@@ -206,7 +205,7 @@ module.exports = {
         let values = await Value.find({
             value: { $regex: "^" + search, $options: "i" },
             visibility
-        }, { "value": 1, "_id": 0 })//, { "key": 1, "value": 1, "_id": 0, "visibility":0 })
+        }, { "value": 1, "_id": 0 })
         if (values.lenght > 500)
             return ["Too many suggestions. Type some characters in order to reduce them"]
         return values
@@ -223,7 +222,6 @@ module.exports = {
         for (let source of sources) {
             let owner
             let ownerEmail = sourcesDetails.find(obj => obj.objectPath == source.record.name)?.insertedBy
-            //logger.debug(sourcesDetails.find(obj => obj.objectPath == source.record.name))
             if (ownerEmail){
                 source.record.insertedBy = ownerEmail
                 await Source.updateOne({ _id: source._id }, { $set: { "record.insertedBy": ownerEmail } })
@@ -247,7 +245,6 @@ module.exports = {
     },
 
     async getEntries(prefix, bucketName, visibility, searchKey, searchValue) {
-        //return await Entries.find()
         if (visibility == "private")
             visibility = prefix.split("/")[0]
         else if (visibility == "shared")
@@ -260,8 +257,7 @@ module.exports = {
             "value": { $regex: "^" + searchValue, $options: "i" },
             visibility
         }, { "key": 1, "value": 1, "_id": 0 })
-        //if (entries.lenght > 500)
-        //    return ["Too many suggestions. Type some characters in order to reduce them"]
+       
         return entries
     },
 
@@ -299,10 +295,7 @@ module.exports = {
     async exampleQueryGeoJson(query) {
 
         logger.debug("example query geojson: query ", query)
-
-        //let key
-        //for (let k in query)
-        //    key = k
+     
         let found = []
         let propertiesQuery = {}
         //TODO now there is a preset deep level search, but this level should be parametrized
@@ -316,14 +309,13 @@ module.exports = {
                 ...(await Source.find({
                     "features": {
                         $elemMatch: {
-                            //"properties.query.key": {
                             ...propertiesQuery,
                             "geometry.coordinates": {
                                 $elemMatch: {
                                     $elemMatch: {
                                         $elemMatch: {
                                             $elemMatch: {
-                                                $eq: Number(query.coordinates) //$elemMatch: { $eq: Number(query[key]) }
+                                                $eq: Number(query.coordinates) 
                                             }
                                         }
                                     }
@@ -341,7 +333,7 @@ module.exports = {
                                     $elemMatch: {
                                         $elemMatch: {
                                             $elemMatch: {
-                                                $eq: Number(query.coordinates) //$elemMatch: { $eq: Number(query[key]) }
+                                                $eq: Number(query.coordinates) 
                                             }
                                         }
                                     }
@@ -358,7 +350,7 @@ module.exports = {
                                 $elemMatch: {
                                     $elemMatch: {
                                         $elemMatch: {
-                                            $eq: Number(query.coordinates) //$elemMatch: { $eq: Number(query[key]) }
+                                            $eq: Number(query.coordinates) 
                                         }
                                     }
                                 }
@@ -373,7 +365,7 @@ module.exports = {
                             "geometry.coordinates": {
                                 $elemMatch: {
                                     $elemMatch: {
-                                        $eq: Number(query.coordinates) //$elemMatch: { $eq: Number(query[key]) }
+                                        $eq: Number(query.coordinates) 
                                     }
                                 }
                             }
@@ -386,9 +378,8 @@ module.exports = {
                             ...propertiesQuery,
                             "geometry.coordinates": {
                                 $elemMatch: {
-                                    //$gte: Number(query.coordinates) - 0.0000001,
-                                    //$lte: Number(query.coordinates) + 0.0000001
-                                    $eq: Number(query.coordinates) //$elemMatch: { $eq: Number(query[key]) }
+
+                                    $eq: Number(query.coordinates) 
                                 }
                             }
                         }
@@ -404,9 +395,7 @@ module.exports = {
                     }
                 }
             })
-        //logger.debug("Found : ", found.length, " items")
-        //logger.debug(found)
-        //logger.debug({ ...propertiesQuery })
+
         return found
     },
 
@@ -427,9 +416,8 @@ module.exports = {
         if (format)
             delete query["format"]
         logger.debug("format ", format)
-        //query.name = new RegExp("^" + prefix, 'i')
         switch (format) {
-            case "geojson": return (await this.exampleQueryGeoJson(query)).filter(obj => objectFilter(obj, prefix, bucket, visibility))//obj.name.includes(prefix))
+            case "geojson": return (await this.exampleQueryGeoJson(query)).filter(obj => objectFilter(obj, prefix, bucket, visibility))
             case "csv": return (await this.exampleQueryCSV(query)).filter(obj => objectFilter(obj, prefix, bucket, visibility))
             case "json": return (await this.exampleQueryJson(query)).filter(obj => objectFilter(obj, prefix, bucket, visibility))
             case "object": return (await this.simpleQuery(query)).filter(obj => objectFilter(obj, prefix, bucket, visibility))
@@ -439,7 +427,6 @@ module.exports = {
 
     async rawQuery(query, prefix, bucket, visibility) {
         logger.info("Raw query")
-        //query.name = new RegExp("^" + prefix, 'i')
         let objects = []
         if (visibility == "public")
             bucket = "public-data"
@@ -455,7 +442,7 @@ module.exports = {
             }
         }
         return objects.filter(obj => typeof obj.raw == "string" ? objectFilter(obj, prefix, bucket, visibility) && (!query.value || obj.raw.includes(query.value)) : objectFilter(obj, prefix, bucket, visibility) && (!query.value || JSON.stringify(obj.raw).includes(query.value)))
-        //return objects.filter(obj => typeof obj.raw == "string" ? obj.record.name.includes(prefix) && obj.raw.includes(query.value) : obj.record.name.includes(prefix) && JSON.stringify(obj.raw).includes(query.value))
+      
     },
 
 
