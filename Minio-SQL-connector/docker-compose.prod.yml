@@ -53,5 +53,15 @@ services:
       MINIO_IDENTITY_OPENID_REDIRECT_URI: http://localhost:9001/oauth_callback
     command: server --console-address ":9001" /data
 
+    minio_SQL_connector-dev-container:
+      image: minio_sql_connector_dev_image
+      build: 
+        context: .
+        dockerfile: ./Dev-container
+      container_name: minio_SQL_connector-dev-container
+      #volumes:
+      #- .:/workspace:cached
+      command: sleep infinity
+
 volumes:
   postgres_data:
