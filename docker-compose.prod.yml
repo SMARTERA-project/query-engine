@@ -59,6 +59,8 @@ services:
         context: .
         dockerfile: ./Dev-container
       container_name: minio_SQL_connector-dev-container
+      ports:
+        - "3000:3000"
       #volumes:
       #- .:/workspace:cached
       command: sleep infinity
