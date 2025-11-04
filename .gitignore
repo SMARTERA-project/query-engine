@@ -10,13 +10,20 @@ Trino connector/config.properties
 Trino connector/.env
 Trino connector/platform simulator/app.dev.py
 Minio SQL connector/log.txt
-Minio-SQL-connector/log.txt
+log.txt
 config.json
-Minio-SQL-connector/logs/
-Minio-SQL-connector/abs.yml
+logs/
+abs.yml
 Minio/
-Minio-SQL-connector/rejected/common.js
-Minio-SQL-connector/config.docker.js
-Minio-SQL-connector/config.asus.js
-Minio-SQL-connector/config.msi.js
-Minio-SQL-connector/sandbox/
+rejected/common.js
+config.docker.js
+config.asus.js
+config.msi.js
+sandbox/
+node_modules/
+config.js
+docker-compose.yaml
+#Esempi query.txt
+docker-compose.yml
+
+utils/percocologger

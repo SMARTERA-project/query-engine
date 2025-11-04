@@ -56,10 +56,33 @@ const typeDefs = gql`
         value: Float!
     }
 
+    type DataPointV2 {
+        source: String
+        survey: String
+        surveyName: String
+        region: String
+        fromUrl: String
+        timestamp: String
+        dimensions: [String]
+        value: Float
+    }
+
     type Query {
         sources: [Source]
         source(id: ID!): Source
         datapoints( survey: String!, sortBy: [String!], sortOrder: String!, dimensions: [String!]!, limit: Int): [DataPoint!]!
+        datapointsV2(
+            source: String,
+            survey: String,
+            dimensions: [String!],
+            region: String,
+            sortBy: [String!],
+            sortOrder: [String!],
+            limit: Int,
+            exclude: [String!],
+            filterBy: Int,
+            filter: [String!]
+        ): [DataPointV2]
     }
 
     type Mutation {
