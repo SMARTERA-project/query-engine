@@ -102,4 +102,8 @@ module.exports = {
             res.status(500).send(error.toString() == "[object Object]" ? error : error.toString())
         }
     },
+    notifyPath: async (req, res) => {
+        console.log("Notification received")
+        return await service.notifyPath(req, res)
+    }
 }

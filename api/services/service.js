@@ -14,6 +14,25 @@ const client = new Client(postgreConfig);
 client.connect();
 minioWriter.client = client
 let syncing
+
+const fs = require('fs');
+const path = require('path');
+let attrWithUrl = config.orion?.attrWithUrl || "datasetUrl"
+const apiConnector = require('../../utils/apiInputConnector')
+apiConnector.createOrionSubscription({
+    orionBaseUrl: config.orion?.orionBaseUrl || 'http://localhost:1027',
+    entityType: config.orion?.entityType || "Thing",//'.*',
+    attrWithUrl,
+    notificationUrl: config.orion?.notificationUrl || 'http://host.docker.internal:3000/orion/subscribe',
+    fiwareService: config.orion?.fiwareService || "service",
+    fiwareServicePath: config.orion?.fiwareServicePath || "/service"
+}).then(sub => {
+    logger.info("Orion subscription created: ", sub)
+}).catch(err => {
+    logger.error("Error creating Orion subscription: ", err.response?.data || err.message || err)
+    logger.error(err.response.config.data)
+    process.exit()
+})
 if (minioConfig.subscribe.all)
     minioWriter.listBuckets().then((buckets) => {
         let a = 1
@@ -177,6 +196,65 @@ function objectFilter(obj, prefix, bucket, visibility) {
 
 module.exports = {
 
+    notifyPath: async (req, res) => {
+        try {
+            const originator = req.headers['fiware-originator'] || req.body.originator || '-';
+            const data = req.body.data || req.body.value || [];
+            if (!Array.isArray(data)) {
+                // sometimes Orion sends single entity in 'data' as object
+            }
+
+            const entities = Array.isArray(data) ? data : [data];
+
+            for (const ent of entities) {
+                const id = ent.id || ent['@id'] || 'unknown-id';
+                // attribute might be keyValues format or object with value
+                let urlValue;
+                if (ent[attrWithUrl] && typeof ent[attrWithUrl] === 'object' && 'value' in ent[attrWithUrl]) {
+                    urlValue = ent[attrWithUrl].value;
+                } else if (ent[attrWithUrl]) {
+                    urlValue = ent[attrWithUrl];
+                } else if (ent[attrWithUrl + ':value']) {
+                    urlValue = ent[attrWithUrl + ':value'];
+                } else if (ent.value) {
+                    // fallback if notification was keyValues
+                    urlValue = ent.value;
+                }
+
+                if (!urlValue || typeof urlValue !== 'string') {
+                    console.warn(`[notify] no URL found for entity ${id}`);
+                    continue;
+                }
+
+                try {
+                    const parsed = new URL(urlValue);
+                    const filename = `${id}-${path.basename(parsed.pathname) || 'dataset'}`;
+                    const outPath = path.join("./examples/", "source.json");//filename);
+
+                    const response = await axios.get(urlValue, { responseType: 'stream', timeout: 30_000 });
+                    const writer = fs.createWriteStream(outPath);
+                    response.data.pipe(writer);
+
+                    await new Promise((resolve, reject) => {
+                        writer.on('finish', resolve);
+                        writer.on('error', reject);
+                    });
+
+                    console.log(`[notify] downloaded ${urlValue} -> ${outPath}`);
+                    if (typeof onDownloaded === 'function') onDownloaded(ent, outPath);
+                } catch (err) {
+                    console.error(`[notify] failed to download ${urlValue}:`, err.message || err);
+                }
+            }
+
+            // respond quickly to Orion
+            res.status(200).send('OK');
+        } catch (err) {
+            console.error('[notify] error handling notification:', err);
+            res.status(500).send('error');
+        }
+    },
+
     async getKeys(prefix, bucketName, visibility, search) {
         if (visibility == "private")
             visibility = prefix.split("/")[0]
@@ -211,7 +289,7 @@ module.exports = {
         return values
     },
 
-    async updateOwner(bearer,email) {
+    async updateOwner(bearer, email) {
         let sources = await Source.find({ name: { $regex: email, $options: 'i' } });
         let sourcesDetails = (await axios.get(config.minioConfig.ownerInfoEndpoint + "/user/listFiles?email=" + email,
             {
@@ -222,7 +300,7 @@ module.exports = {
         for (let source of sources) {
             let owner
             let ownerEmail = sourcesDetails.find(obj => obj.objectPath == source.record.name)?.insertedBy
-            if (ownerEmail){
+            if (ownerEmail) {
                 source.record.insertedBy = ownerEmail
                 await Source.updateOne({ _id: source._id }, { $set: { "record.insertedBy": ownerEmail } })
             }
@@ -257,7 +335,7 @@ module.exports = {
             "value": { $regex: "^" + searchValue, $options: "i" },
             visibility
         }, { "key": 1, "value": 1, "_id": 0 })
-       
+
         return entries
     },
 
@@ -295,7 +373,7 @@ module.exports = {
     async exampleQueryGeoJson(query) {
 
         logger.debug("example query geojson: query ", query)
-     
+
         let found = []
         let propertiesQuery = {}
         //TODO now there is a preset deep level search, but this level should be parametrized
@@ -315,7 +393,7 @@ module.exports = {
                                     $elemMatch: {
                                         $elemMatch: {
                                             $elemMatch: {
-                                                $eq: Number(query.coordinates) 
+                                                $eq: Number(query.coordinates)
                                             }
                                         }
                                     }
@@ -333,7 +411,7 @@ module.exports = {
                                     $elemMatch: {
                                         $elemMatch: {
                                             $elemMatch: {
-                                                $eq: Number(query.coordinates) 
+                                                $eq: Number(query.coordinates)
                                             }
                                         }
                                     }
@@ -350,7 +428,7 @@ module.exports = {
                                 $elemMatch: {
                                     $elemMatch: {
                                         $elemMatch: {
-                                            $eq: Number(query.coordinates) 
+                                            $eq: Number(query.coordinates)
                                         }
                                     }
                                 }
@@ -365,7 +443,7 @@ module.exports = {
                             "geometry.coordinates": {
                                 $elemMatch: {
                                     $elemMatch: {
-                                        $eq: Number(query.coordinates) 
+                                        $eq: Number(query.coordinates)
                                     }
                                 }
                             }
@@ -379,7 +457,7 @@ module.exports = {
                             "geometry.coordinates": {
                                 $elemMatch: {
 
-                                    $eq: Number(query.coordinates) 
+                                    $eq: Number(query.coordinates)
                                 }
                             }
                         }
@@ -442,7 +520,7 @@ module.exports = {
             }
         }
         return objects.filter(obj => typeof obj.raw == "string" ? objectFilter(obj, prefix, bucket, visibility) && (!query.value || obj.raw.includes(query.value)) : objectFilter(obj, prefix, bucket, visibility) && (!query.value || JSON.stringify(obj.raw).includes(query.value)))
-      
+
     },
 
 
