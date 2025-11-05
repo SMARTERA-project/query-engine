@@ -19,20 +19,7 @@ const fs = require('fs');
 const path = require('path');
 let attrWithUrl = config.orion?.attrWithUrl || "datasetUrl"
 const apiConnector = require('../../utils/apiInputConnector')
-apiConnector.createOrionSubscription({
-    orionBaseUrl: config.orion?.orionBaseUrl || 'http://localhost:1027',
-    entityType: config.orion?.entityType || "Thing",//'.*',
-    attrWithUrl,
-    notificationUrl: config.orion?.notificationUrl || 'http://host.docker.internal:3000/orion/subscribe',
-    fiwareService: config.orion?.fiwareService || "service",
-    fiwareServicePath: config.orion?.fiwareServicePath || "/service"
-}).then(sub => {
-    logger.info("Orion subscription created: ", sub)
-}).catch(err => {
-    logger.error("Error creating Orion subscription: ", err.response?.data || err.message || err)
-    logger.error(err.response.config.data)
-    process.exit()
-})
+
 if (minioConfig.subscribe.all)
     minioWriter.listBuckets().then((buckets) => {
         let a = 1
@@ -197,62 +184,43 @@ function objectFilter(obj, prefix, bucket, visibility) {
 module.exports = {
 
     notifyPath: async (req, res) => {
-        try {
-            const originator = req.headers['fiware-originator'] || req.body.originator || '-';
-            const data = req.body.data || req.body.value || [];
-            if (!Array.isArray(data)) {
-                // sometimes Orion sends single entity in 'data' as object
+
+        const data = req.body.data || req.body.value || req.body;
+        const entities = Array.isArray(data) ? data : [data];
+
+        for (const ent of entities) {
+            const id = ent.id || ent['@id'] || 'unknown-id';
+            // attribute might be keyValues format or object with value
+            let urlValue;
+            if (ent[attrWithUrl] && typeof ent[attrWithUrl] === 'object' && 'value' in ent[attrWithUrl]) {
+                urlValue = ent[attrWithUrl].value;
+            } else if (ent[attrWithUrl]) {
+                urlValue = ent[attrWithUrl];
+            } else if (ent[attrWithUrl + ':value']) {
+                urlValue = ent[attrWithUrl + ':value'];
+            } else if (ent.value) {
+                urlValue = ent.value;
             }
 
-            const entities = Array.isArray(data) ? data : [data];
-
-            for (const ent of entities) {
-                const id = ent.id || ent['@id'] || 'unknown-id';
-                // attribute might be keyValues format or object with value
-                let urlValue;
-                if (ent[attrWithUrl] && typeof ent[attrWithUrl] === 'object' && 'value' in ent[attrWithUrl]) {
-                    urlValue = ent[attrWithUrl].value;
-                } else if (ent[attrWithUrl]) {
-                    urlValue = ent[attrWithUrl];
-                } else if (ent[attrWithUrl + ':value']) {
-                    urlValue = ent[attrWithUrl + ':value'];
-                } else if (ent.value) {
-                    // fallback if notification was keyValues
-                    urlValue = ent.value;
-                }
-
-                if (!urlValue || typeof urlValue !== 'string') {
-                    console.warn(`[notify] no URL found for entity ${id}`);
-                    continue;
-                }
-
-                try {
-                    const parsed = new URL(urlValue);
-                    const filename = `${id}-${path.basename(parsed.pathname) || 'dataset'}`;
-                    const outPath = path.join("./examples/", "source.json");//filename);
-
-                    const response = await axios.get(urlValue, { responseType: 'stream', timeout: 30_000 });
-                    const writer = fs.createWriteStream(outPath);
-                    response.data.pipe(writer);
-
-                    await new Promise((resolve, reject) => {
-                        writer.on('finish', resolve);
-                        writer.on('error', reject);
-                    });
-
-                    console.log(`[notify] downloaded ${urlValue} -> ${outPath}`);
-                    if (typeof onDownloaded === 'function') onDownloaded(ent, outPath);
-                } catch (err) {
-                    console.error(`[notify] failed to download ${urlValue}:`, err.message || err);
-                }
+            if (!urlValue || typeof urlValue !== 'string') {
+                console.warn(`[notify] no URL found for entity ${id}`);
+                continue;
             }
-
-            // respond quickly to Orion
-            res.status(200).send('OK');
-        } catch (err) {
-            console.error('[notify] error handling notification:', err);
-            res.status(500).send('error');
+            const response = await axios.get(urlValue);
+            await minioWriter.insertInDBs(response.data, { 
+                name: id + '-' + path.basename((new URL(urlValue)).pathname),
+                lastModified: new Date(),
+                versionId: 'null',
+                isDeleteMarker: false,
+                bucketName: 'orion-notify',
+                size: response.data.length,
+                isLatest: true,
+                etag: '',
+                insertedBy: 'orion-notify'
+            });
+            logger.info(`[notify] downloaded ${urlValue}`);
         }
+        return 'OK';
     },
 
     async getKeys(prefix, bucketName, visibility, search) {

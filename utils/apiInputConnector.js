@@ -2,6 +2,9 @@ const express = require('express');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const logger = require('percocologger')
+const config = require('../config.js');
+let attrWithUrl = config.orion?.attrWithUrl || "datasetUrl"
 
 // utils/apiInputConnector.js
 // GitHub Copilot
@@ -18,21 +21,23 @@ async function createOrionSubscription({
     fiwareService,       // optional Fiware-Service header
     fiwareServicePath    // optional Fiware-ServicePath header
 }) {
+    if (await checkMultipleSubscriptions(notificationUrl) > 0) 
+        return logger.warn(message = "Multiple existing subscriptions found for the same notification URL. Consider cleaning them up.") || message;
     const sub = {
-        description: `Universal subscription`,
+        description: `Query engine subscription`,
         subject: {
             entities: [{ idPattern: '.*' }],//, type: entityType }]//,
             //condition: { attrs: [attrWithUrl] }
         },
 
         notification: {
-            http: { url: "http://host.docker.internal:3000/api/orion/subscribe" },// notificationUrl }//,
+            http: { url: notificationUrl },// notificationUrl }//,
             "attrs": [],
 
             // attrs: [attrWithUrl]
             // optionally set attrsFormat or metadata if needed
         },
-        "attrs": [],
+        // "attrs": [],
 
         // prevent too frequent notifications
         throttling: 1
@@ -46,6 +51,21 @@ async function createOrionSubscription({
     const res = await axios.post(url, sub, { headers });
     return res.data; // contains subscription id or response
 }
+
+createOrionSubscription({
+    orionBaseUrl: config.orion?.orionBaseUrl || 'http://localhost:1027',
+    entityType: config.orion?.entityType || "Thing",//'.*',
+    attrWithUrl,
+    notificationUrl: config.orion?.notificationUrl || 'http://host.docker.internal:3000/api/orion/subscribe',
+    fiwareService: config.orion?.fiwareService || "service",
+    fiwareServicePath: config.orion?.fiwareServicePath || "/service"
+}).then(sub => {
+    logger.info("Orion subscription created: ", sub)
+}).catch(err => {
+    logger.error("Error creating Orion subscription: ", err.response?.data || err.message || err)
+    logger.error(err.response?.config?.data)
+    process.exit()
+})
 
 function startNotificationServer({
     port = 3000,
@@ -125,6 +145,59 @@ function startNotificationServer({
 
     return { app, server };
 }
+
+async function getSubscriptions() {
+    return (await axios.get('http://localhost:1027/v2/subscriptions', { headers: { 'Fiware-Service': 'service', 'Fiware-ServicePath': '/service' } })).data
+}
+
+async function deleteSubscription(subId) {
+    return (await axios.delete(`http://localhost:1027/v2/subscriptions/${subId}`, { headers: { 'Fiware-Service': 'service', 'Fiware-ServicePath': '/service' } })).data
+}
+
+async function checkMultipleSubscriptions(notificationUrl) {
+    let subscriptions = await getSubscriptions()
+    let count = 0
+    for (let sub of subscriptions) {
+        if (config.deleteAllDuplicateOrionSubscriptions && sub.notification?.http?.url === notificationUrl) {
+            if (count > 0) {
+                console.log(`Deleting duplicate subscription with id ${sub.id}`)
+                await deleteSubscription(sub.id)
+            }
+            else
+                count++
+        }
+        else if (sub.subject?.entities?.[0]?.idPattern === '.*' && sub.notification?.http?.url === notificationUrl && sub.description === `Query engine subscription`) {
+            if (count > 0) {
+                console.log(`Deleting duplicate subscription with id ${sub.id}`)
+                await deleteSubscription(sub.id)
+            }
+            else
+                count++
+        }
+    }
+    return count;
+}
+
+async function cancelAllOrionSubscriptions() {
+    try {
+        let subscriptions = await getSubscriptions()
+        console.log(`Found ${subscriptions.length} existing subscriptions`)
+        for (let sub of subscriptions) {
+            console.log(`Deleting subscription ${sub.id}`)
+            await deleteSubscription(sub.id)
+        }
+    }
+    catch (error) {
+        console.error("Error while cancelling Orion subscriptions : " + error.toString())
+    }
+}
+
+/*
+cancelAllOrionSubscriptions().then(() => {
+    console.log("All existing Orion subscriptions cancelled")
+}).catch((error) => {
+    console.error("Error while cancelling Orion subscriptions : " + error.toString())
+});*/
 
 // Example usage (uncomment and adapt):
 /*
