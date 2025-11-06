@@ -1,4 +1,4 @@
-const Source = require('../models/source')
+const Source = require('../models/Source')
 const Datapoint = require('../models/Datapoint')
 const util = require('util')
 

@@ -1,9 +1,10 @@
 const logger = require('percocologger')
 const log = logger.info
-const Source = require('../models/source')
-const Value = require('../models/value')
-const Key = require('../models/key')
-const Entries = require('../models/entries')
+const Source = require('../models/Source')
+const Value = require('../models/Value')
+const Key = require('../models/Key')
+const Entries = require('../models/Entries')
+const Datapoints = require("../models/Datapoint")
 const { sleep, json2csv } = require('../../utils/common')
 const { Client } = require('pg');
 const config = require('../../config')
@@ -207,17 +208,21 @@ module.exports = {
                 continue;
             }
             const response = await axios.get(urlValue);
-            await minioWriter.insertInDBs(response.data, { 
-                name: id + '-' + path.basename((new URL(urlValue)).pathname),
-                lastModified: new Date(),
-                versionId: 'null',
-                isDeleteMarker: false,
-                bucketName: 'orion-notify',
-                size: response.data.length,
-                isLatest: true,
-                etag: '',
-                insertedBy: 'orion-notify'
-            });
+            if (response.data.data.datapoints)
+                //for (let datapoint of response.data.data.datapoints)
+                await Datapoints.insertMany(response.data.data.datapoints)
+            else
+                await minioWriter.insertInDBs(response.data, {
+                    name: id + '-' + path.basename((new URL(urlValue)).pathname),
+                    lastModified: new Date(),
+                    versionId: 'null',
+                    isDeleteMarker: false,
+                    bucketName: 'orion-notify',
+                    size: response.data.length,
+                    isLatest: true,
+                    etag: '',
+                    insertedBy: 'orion-notify'
+                });
             logger.info(`[notify] downloaded ${urlValue}`);
         }
         return 'OK';

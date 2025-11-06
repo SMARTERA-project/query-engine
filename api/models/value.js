@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const value = mongoose.Schema(
+const value = new mongoose.Schema(
     {
         value: { type: mongoose.Schema.Types.Mixed, required: true },
         visibility: { type: Array, required: true },
