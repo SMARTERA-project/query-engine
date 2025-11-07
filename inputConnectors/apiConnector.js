@@ -85,4 +85,4 @@ async function checkMultipleSubscriptions(notificationUrl) {
     return count;
 }
 
-module.exports = { createOrionSubscription, startNotificationServer };
+module.exports = { createOrionSubscription };
