@@ -1,9 +1,10 @@
 const logger = require('percocologger')
 const log = logger.info
-const Source = require('../models/source')
-const Value = require('../models/value')
-const Key = require('../models/key')
-const Entries = require('../models/entries')
+const Source = require('../models/Source')
+const Value = require('../models/Value')
+const Key = require('../models/Key')
+const Entries = require('../models/Entries')
+const Datapoints = require("../models/Datapoint")
 const { sleep, json2csv } = require('../../utils/common')
 const { Client } = require('pg');
 const config = require('../../config')
@@ -14,6 +15,12 @@ const client = new Client(postgreConfig);
 client.connect();
 minioWriter.client = client
 let syncing
+
+const fs = require('fs');
+const path = require('path');
+let attrWithUrl = config.orion?.attrWithUrl || "datasetUrl"
+const apiConnector = require('../../inputConnectors/apiConnector')
+
 if (minioConfig.subscribe.all)
     minioWriter.listBuckets().then((buckets) => {
         let a = 1
@@ -177,6 +184,48 @@ function objectFilter(obj, prefix, bucket, visibility) {
 
 module.exports = {
 
+    notifyPath: async (req, res) => {
+
+        const data = req.body.data || req.body.value || req.body;
+        const entities = Array.isArray(data) ? data : [data];
+
+        for (const ent of entities) {
+            const id = ent.id || ent['@id'] || 'unknown-id';
+            let urlValue;
+            if (ent[attrWithUrl] && typeof ent[attrWithUrl] === 'object' && 'value' in ent[attrWithUrl]) {
+                urlValue = ent[attrWithUrl].value;
+            } else if (ent[attrWithUrl]) {
+                urlValue = ent[attrWithUrl];
+            } else if (ent[attrWithUrl + ':value']) {
+                urlValue = ent[attrWithUrl + ':value'];
+            } else if (ent.value) {
+                urlValue = ent.value;
+            }
+
+            if (!urlValue || typeof urlValue !== 'string') {
+                console.warn(`[notify] no URL found for entity ${id}`);
+                continue;
+            }
+            const response = await axios.get(urlValue);
+            if (response.data.data.datapoints)
+                await Datapoints.insertMany(response.data.data.datapoints)
+            else
+                await minioWriter.insertInDBs(response.data, {
+                    name: id + '-' + path.basename((new URL(urlValue)).pathname),
+                    lastModified: new Date(),
+                    versionId: 'null',
+                    isDeleteMarker: false,
+                    bucketName: 'orion-notify',
+                    size: response.data.length,
+                    isLatest: true,
+                    etag: '',
+                    insertedBy: 'orion-notify'
+                });
+            logger.info(`[notify] downloaded ${urlValue}`);
+        }
+        return 'OK';
+    },
+
     async getKeys(prefix, bucketName, visibility, search) {
         if (visibility == "private")
             visibility = prefix.split("/")[0]
@@ -211,7 +260,7 @@ module.exports = {
         return values
     },
 
-    async updateOwner(bearer,email) {
+    async updateOwner(bearer, email) {
         let sources = await Source.find({ name: { $regex: email, $options: 'i' } });
         let sourcesDetails = (await axios.get(config.minioConfig.ownerInfoEndpoint + "/user/listFiles?email=" + email,
             {
@@ -222,7 +271,7 @@ module.exports = {
         for (let source of sources) {
             let owner
             let ownerEmail = sourcesDetails.find(obj => obj.objectPath == source.record.name)?.insertedBy
-            if (ownerEmail){
+            if (ownerEmail) {
                 source.record.insertedBy = ownerEmail
                 await Source.updateOne({ _id: source._id }, { $set: { "record.insertedBy": ownerEmail } })
             }
@@ -257,7 +306,7 @@ module.exports = {
             "value": { $regex: "^" + searchValue, $options: "i" },
             visibility
         }, { "key": 1, "value": 1, "_id": 0 })
-       
+
         return entries
     },
 
@@ -295,7 +344,7 @@ module.exports = {
     async exampleQueryGeoJson(query) {
 
         logger.debug("example query geojson: query ", query)
-     
+
         let found = []
         let propertiesQuery = {}
         //TODO now there is a preset deep level search, but this level should be parametrized
@@ -315,7 +364,7 @@ module.exports = {
                                     $elemMatch: {
                                         $elemMatch: {
                                             $elemMatch: {
-                                                $eq: Number(query.coordinates) 
+                                                $eq: Number(query.coordinates)
                                             }
                                         }
                                     }
@@ -333,7 +382,7 @@ module.exports = {
                                     $elemMatch: {
                                         $elemMatch: {
                                             $elemMatch: {
-                                                $eq: Number(query.coordinates) 
+                                                $eq: Number(query.coordinates)
                                             }
                                         }
                                     }
@@ -350,7 +399,7 @@ module.exports = {
                                 $elemMatch: {
                                     $elemMatch: {
                                         $elemMatch: {
-                                            $eq: Number(query.coordinates) 
+                                            $eq: Number(query.coordinates)
                                         }
                                     }
                                 }
@@ -365,7 +414,7 @@ module.exports = {
                             "geometry.coordinates": {
                                 $elemMatch: {
                                     $elemMatch: {
-                                        $eq: Number(query.coordinates) 
+                                        $eq: Number(query.coordinates)
                                     }
                                 }
                             }
@@ -379,7 +428,7 @@ module.exports = {
                             "geometry.coordinates": {
                                 $elemMatch: {
 
-                                    $eq: Number(query.coordinates) 
+                                    $eq: Number(query.coordinates)
                                 }
                             }
                         }
@@ -442,7 +491,7 @@ module.exports = {
             }
         }
         return objects.filter(obj => typeof obj.raw == "string" ? objectFilter(obj, prefix, bucket, visibility) && (!query.value || obj.raw.includes(query.value)) : objectFilter(obj, prefix, bucket, visibility) && (!query.value || JSON.stringify(obj.raw).includes(query.value)))
-      
+
     },
 
 

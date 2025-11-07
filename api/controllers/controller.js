@@ -40,7 +40,7 @@ const querySQL = async (req, res) => {
 
 module.exports = {
 
-    queryMongo, 
+    queryMongo,
 
     querySQL,
 
@@ -102,4 +102,14 @@ module.exports = {
             res.status(500).send(error.toString() == "[object Object]" ? error : error.toString())
         }
     },
+    notifyPath: async (req, res) => {
+        logger.info("Notification received")
+        try {
+            res.send(await service.notifyPath(req, res))
+        }
+        catch (error) {
+            logger.error(error)
+            res.status(500).send(error.toString() == "[object Object]" ? error : error.toString())
+        }
+    }
 }

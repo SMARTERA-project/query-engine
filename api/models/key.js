@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const key = mongoose.Schema(
+const key = new mongoose.Schema(
   {
     key: { type: String, required: true },
     visibility: { type: Array, required: true },

@@ -10,6 +10,7 @@ router.get(encodeURI("/keys"), auth, controller.getKeys)
 router.get(encodeURI("/values"), auth, controller.getValues)
 router.get(encodeURI("/entries"), auth, controller.getEntries)
 router.get(encodeURI("/minio/listObjects"), auth, controller.minioListObjects)
+router.post(encodeURI("/orion/subscribe"), auth, controller.notifyPath)
 router.put(encodeURI("/query"), auth, controller.sync)
 
 module.exports = router
