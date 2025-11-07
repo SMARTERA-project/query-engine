@@ -7,15 +7,13 @@ const config = require('../config.js');
 let attrWithUrl = config.orion?.attrWithUrl || "datasetUrl"
 
 async function createOrionSubscription({
-    orionBaseUrl,       
-    entityType,        
-    attrWithUrl,        
-    notificationUrl,   
-    fiwareService,      
-    fiwareServicePath   
+    orionBaseUrl,
+    notificationUrl,
+    fiwareService,
+    fiwareServicePath
 }) {
-    if (await checkMultipleSubscriptions(notificationUrl) > 0) 
-        return logger.warn(message = "Multiple existing subscriptions found for the same notification URL. Consider cleaning them up.") || message;
+    if (await checkMultipleSubscriptions(notificationUrl) > 0)
+        return logger.warn(message = "Already existing subscription found for the same notification URL.") || message;
     const sub = {
         description: `Query engine subscription`,
         subject: {
@@ -35,18 +33,17 @@ async function createOrionSubscription({
 
     const url = `${orionBaseUrl.replace(/\/$/, '')}/v2/subscriptions`;
     const res = await axios.post(url, sub, { headers });
-    return res.data; 
+    return res.data;
 }
 
 createOrionSubscription({
     orionBaseUrl: config.orion?.orionBaseUrl || 'http://localhost:1027',
-    entityType: config.orion?.entityType || "Thing",
-    attrWithUrl,
     notificationUrl: config.orion?.notificationUrl || 'http://host.docker.internal:3000/api/orion/subscribe',
     fiwareService: config.orion?.fiwareService || "service",
     fiwareServicePath: config.orion?.fiwareServicePath || "/service"
 }).then(sub => {
-    logger.info("Orion subscription created: ", sub)
+    if (sub != "Already existing subscription found for the same notification URL.")
+        logger.info("Orion subscription created: " + sub)
 }).catch(err => {
     logger.error("Error creating Orion subscription: ", err.response?.data || err.message || err)
     logger.error(err.response?.config?.data)
