@@ -36,19 +36,19 @@ async function createOrionSubscription({
     return res.data;
 }
 
-createOrionSubscription({
-    orionBaseUrl: config.orion?.orionBaseUrl || 'http://localhost:1027',
-    notificationUrl: config.orion?.notificationUrl || 'http://host.docker.internal:3000/api/orion/subscribe',
-    fiwareService: config.orion?.fiwareService || "service",
-    fiwareServicePath: config.orion?.fiwareServicePath || "/service"
-}).then(sub => {
-    if (sub != "Already existing subscription found for the same notification URL.")
-        logger.info("Orion subscription created: " + sub)
-}).catch(err => {
-    logger.error("Error creating Orion subscription: ", err.response?.data || err.message || err)
-    logger.error(err.response?.config?.data)
-    process.exit()
-})
+if (config.orion.subscribe)
+    createOrionSubscription({
+        orionBaseUrl: config.orion?.orionBaseUrl || 'http://localhost:1027',
+        notificationUrl: config.orion?.notificationUrl || 'http://host.docker.internal:3000/api/orion/subscribe',
+        fiwareService: config.orion?.fiwareService || "service",
+        fiwareServicePath: config.orion?.fiwareServicePath || "/service"
+    }).then(sub => {
+        if (sub != "Already existing subscription found for the same notification URL.")
+            logger.info("Orion subscription created: " + sub)
+    }).catch(err => {
+        logger.error("Error creating Orion subscription: ", err.response?.data || err.message || err)
+        err.response?.config?.data && logger.error(err.response?.config?.data)
+    })
 
 async function getSubscriptions() {
     return (await axios.get('http://localhost:1027/v2/subscriptions', { headers: { 'Fiware-Service': 'service', 'Fiware-ServicePath': '/service' } })).data

@@ -23,15 +23,23 @@ module.exports = {
     password: '',
     port: 5432
   },
+  orion: {
+    subscribe: true,
+    attrWithUrl: "datasetUrl",
+    orionBaseUrl: "localhost:1027",
+    notificationUrl: "http://host.docker.internal:3000/api/orion/subscribe",
+    fiwareService: "service",
+    fiwareServicePath: "/service"
+  },
   logLevel: "info",
-  syncInterval : 86400000,
-  doNotSyncAtStart : false,
-  delays : 1,
-  queryAllowedExtensions : ["csv", "json", "geojson"],
-  parseCompatibilityMode : 0,
-  port : 3000,
+  syncInterval: 86400000,
+  doNotSyncAtStart: false,
+  delays: 1,
+  queryAllowedExtensions: ["csv", "json", "geojson"],
+  parseCompatibilityMode: 0,
+  port: 3000,
   updateOwner: "later",
-  writeLogsOnFile : true,
+  writeLogsOnFile: true,
   mongo: "mongodb://localhost:27017/Minio-Mongo", // mongo url
   authConfig: {
     idmHost: "https://platform.beopendep.it/auth",
@@ -43,5 +51,5 @@ module.exports = {
     introspect: false,
     publicKey: "",
     secret: "" // don't push it
-},
+  },
 }
