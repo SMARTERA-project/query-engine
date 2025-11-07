@@ -1,10 +1,7 @@
 const express = require('express');
 const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
 const logger = require('percocologger')
 const config = require('../config.js');
-let attrWithUrl = config.orion?.attrWithUrl || "datasetUrl"
 
 async function createOrionSubscription({
     orionBaseUrl,
@@ -51,11 +48,11 @@ if (config.orion.subscribe)
     })
 
 async function getSubscriptions() {
-    return (await axios.get('http://localhost:1027/v2/subscriptions', { headers: { 'Fiware-Service': 'service', 'Fiware-ServicePath': '/service' } })).data
+    return (await axios.get((config.orion.orionBaseUrl || 'http://localhost:1027') + '/v2/subscriptions', { headers: { 'Fiware-Service': 'service', 'Fiware-ServicePath': '/service' } })).data
 }
 
 async function deleteSubscription(subId) {
-    return (await axios.delete(`http://localhost:1027/v2/subscriptions/${subId}`, { headers: { 'Fiware-Service': 'service', 'Fiware-ServicePath': '/service' } })).data
+    return (await axios.delete(`${(config.orion.orionBaseUrl || 'http://localhost:1027')}/v2/subscriptions/${subId}`, { headers: { 'Fiware-Service': 'service', 'Fiware-ServicePath': '/service' } })).data
 }
 
 async function checkMultipleSubscriptions(notificationUrl) {

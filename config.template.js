@@ -26,7 +26,7 @@ module.exports = {
   orion: {
     subscribe: true,
     attrWithUrl: "datasetUrl",
-    orionBaseUrl: "localhost:1027",
+    orionBaseUrl: "http://localhost:1027",
     notificationUrl: "http://host.docker.internal:3000/api/orion/subscribe",
     fiwareService: "service",
     fiwareServicePath: "/service"
