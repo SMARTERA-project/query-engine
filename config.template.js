@@ -25,6 +25,7 @@ module.exports = {
   },
   orion: {
     subscribe: true,
+    deleteAllDuplicateSubscriptions: true,
     attrWithUrl: "datasetUrl",
     orionBaseUrl: "http://localhost:1027",
     notificationUrl: "http://host.docker.internal:3000/api/orion/subscribe",

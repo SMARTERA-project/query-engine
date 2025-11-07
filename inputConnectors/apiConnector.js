@@ -59,7 +59,7 @@ async function checkMultipleSubscriptions(notificationUrl) {
     let subscriptions = await getSubscriptions()
     let count = 0
     for (let sub of subscriptions) {
-        if (config.deleteAllDuplicateOrionSubscriptions && sub.notification?.http?.url === notificationUrl) {
+        if (config.orion.deleteAllDuplicateSubscriptions && sub.notification?.http?.url === notificationUrl) {
             if (count > 0) {
                 console.log(`Deleting duplicate subscription with id ${sub.id}`)
                 await deleteSubscription(sub.id)
