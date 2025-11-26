@@ -68,16 +68,49 @@ const typeDefs = gql`
   }
 
   type DataPointV3 {
-    _id: ID!
-    sourceId: ID
+    _id: String
+    sourceId: String
     name: String
     record: String
-    survey: String!
+    survey: String
+    surveyName: String
     region: String
     source: String
     timestamp: String
     value: Float
-    dimensions: [String]
+    dimensions: [String],
+    fromUrl: String
+  }
+
+  type DataPointV4 {
+    _id: String
+    source: String
+    survey: String
+    surveyName: String
+    surveyData: String
+    region: String
+    dimensions: [Dimension!]
+    aggregationPeriod: String
+    value: Float
+    timestamp: String
+    smartKeys: [String]
+    references: [String]
+    fromUrl: String
+    meta: Meta
+    updateFrequency: String
+  }
+
+  type Dimension {
+    geo: String
+    sex: String
+    unit: String
+    age: String
+    year: String
+    frequency: String
+  }
+
+  type Meta {
+    quality: String
   }
 
   type Query {
@@ -90,7 +123,6 @@ const typeDefs = gql`
       dimensions: [String!]!
       limit: Int
     ): [DataPoint!]!
-    ,
     datapointsV2(
       source: String
       survey: String
@@ -103,7 +135,7 @@ const typeDefs = gql`
       filterBy: Int
       filter: [String!]
     ): [DataPointV2]
-    ,
+
     datapointsV3(
       survey: String
       source: String
@@ -116,6 +148,26 @@ const typeDefs = gql`
       sortOrder: [String]
       limit: Int
     ): [DataPointV3!]!
+
+    datapointsV4(
+      survey: String
+      source: String
+      region: String
+      geo: String
+      sex: String
+      age: String
+      year: String
+      unit: String
+      frequency: String
+      dimensions: [String]
+      exclude: [String]
+      filterBy: Int
+      filter: [String]
+      sortBy: [String]
+      sortOrder: [String]
+      limit: Int
+      lang: String
+    ): [DataPointV4!]!
   }
 
   type Mutation {

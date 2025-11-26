@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -6,20 +6,20 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_DB: 
-      POSTGRES_USER: 
-      POSTGRES_PASSWORD: 
+      POSTGRES_DB:
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
     ports:
-      - "5432:5432"  
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      
+
   minio_SQL_connector:
     image: minio_sql_connector
     container_name: minio_sql_connector
     restart: always
     ports:
-      - "3000:3000"  
+      - "3000:3000"
     volumes:
       - ./config.js:/app/config.js
 
@@ -27,7 +27,7 @@ services:
     image: mongo:4.4
     container_name: minio-mongo-connector
     ports:
-       - 22000:27017
+      - 22000:27017
     restart: always
     volumes:
       - mongodb_data:/data/db
@@ -41,21 +41,21 @@ services:
     #volumes:
     #  - ./minio-storage:/data
     environment:
-      MINIO_ROOT_USER: 
-      MINIO_ROOT_PASSWORD: 
+      MINIO_ROOT_USER:
+      MINIO_ROOT_PASSWORD:
       #MINIO_BROWSER_REDIRECT_URL: http://localhost:9001/minio/
-      MINIO_IDENTITY_OPENID_CONFIG_URL: 
-      MINIO_BROWSER_REDIRECT_URL: 'http://localhost:9001'
-      MINIO_IDENTITY_OPENID_CLIENT_ID: 
-      MINIO_IDENTITY_OPENID_CLIENT_SECRET: 
-      MINIO_IDENTITY_OPENID_SCOPES: 'openid profile email'
+      MINIO_IDENTITY_OPENID_CONFIG_URL:
+      MINIO_BROWSER_REDIRECT_URL: "http://localhost:9001"
+      MINIO_IDENTITY_OPENID_CLIENT_ID:
+      MINIO_IDENTITY_OPENID_CLIENT_SECRET:
+      MINIO_IDENTITY_OPENID_SCOPES: "openid profile email"
       MINIO_IDENTITY_OPENID_CLAIM_NAME: policy
       MINIO_IDENTITY_OPENID_REDIRECT_URI: http://localhost:9001/oauth_callback
     command: server --console-address ":9001" /data
 
-    minio_SQL_connector-dev-container:
+  minio_SQL_connector-dev-container:
       image: minio_sql_connector_dev_image
-      build: 
+      build:
         context: .
         dockerfile: ./Dev-container
       container_name: minio_SQL_connector-dev-container
@@ -64,6 +64,22 @@ services:
       #volumes:
       #- .:/workspace:cached
       command: sleep infinity
+
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    container_name: libretranslate
+    restart: unless-stopped
+    environment:
+      - ALLOWED_HOSTS=*
+    ports:
+      - "5000:5000"
+
+  redis:
+    image: redis:7-alpine
+    container_name: libre_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
 
 volumes:
   postgres_data:

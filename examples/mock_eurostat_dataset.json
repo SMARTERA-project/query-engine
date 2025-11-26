@@ -1,0 +1,2267 @@
+[
+  {
+    "id": "9063939e-226e-459b-bfb2-4d2a59e73d83",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Roma",
+    "dimensions": [
+      {
+        "geo": "Roma"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y75-79"
+      },
+      {
+        "year": "2022"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1131717,
+    "timestamp": "2025-03-23T11:05:07.836491",
+    "smartKeys": [
+      "Roma",
+      "2022",
+      "Female",
+      "Y75-79"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=ROM&age=Y75-79&sex=F&year=2022",
+    "meta": {
+      "quality": "Estimated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "9063939e-226e-459b-bfb2-4d2a59e73d83",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "surveyData": "Population dataset for Roma",
+    "region": "NUTS2",
+    "source": "ESTAT",
+    "timestamp": "2025-10-07T08:27:18.009Z",
+    "survey": "ISOC_R_BLT12_I",
+    "dimensions": [
+      {
+        "geo": "Severozapaden"
+      },
+      {
+        "sex": "Percentage of individuals"
+      },
+      {
+        "unit": "Last online purchase: in the last 3 months"
+      },
+      {
+        "age": "Y35-39"
+      },
+      {
+        "year": "2000"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "smartKeys": [
+      "Roma",
+      "2022",
+      "Female",
+      "Y75-79"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=ROM&age=Y75-79&sex=F&year=2022",
+    "meta": {
+      "quality": "Estimated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "ea6cd28c-afe5-4f62-a405-2b0dc89e353c",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Kaunas",
+    "dimensions": [
+      {
+        "geo": "Kaunas"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y10-14"
+      },
+      {
+        "year": "2022"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 472470,
+    "timestamp": "2025-05-11T11:05:07.836681",
+    "smartKeys": [
+      "Kaunas",
+      "2022",
+      "Female",
+      "Y10-14"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=KAU&age=Y10-14&sex=F&year=2022"
+  },
+  {
+    "id": "67dd8cee-d6fc-42a9-b3ba-9fd598765b57",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Vilnius",
+    "dimensions": [
+      {
+        "geo": "Vilnius"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y45-49"
+      },
+      {
+        "year": "2019"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 234002,
+    "timestamp": "2024-12-06T11:05:07.836783",
+    "smartKeys": [
+      "Vilnius",
+      "2019",
+      "Male",
+      "Y45-49"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=VIL&age=Y45-49&sex=M&year=2019"
+  },
+  {
+    "id": "acbedd23-0329-4429-95a8-121e360ba616",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Cagliari",
+    "dimensions": [
+      {
+        "geo": "Cagliari"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y50-54"
+      },
+      {
+        "year": "2021"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 583359,
+    "timestamp": "2025-09-28T11:05:07.836874",
+    "smartKeys": [
+      "Cagliari",
+      "2021",
+      "Male",
+      "Y50-54"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=CAG&age=Y50-54&sex=M&year=2021",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "id": "64ca3244-fe06-46ce-b128-ed709a8d4f09",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Porto",
+    "dimensions": [
+      {
+        "geo": "Porto"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y65-69"
+      },
+      {
+        "year": "2023"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 966706,
+    "timestamp": "2025-02-28T11:05:07.836915",
+    "smartKeys": [
+      "Porto",
+      "2023",
+      "Female",
+      "Y65-69"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=POR&age=Y65-69&sex=F&year=2023",
+    "meta": {
+      "quality": "Provisional"
+    }
+  },
+  {
+    "id": "ec406b0f-2446-4a5b-b445-878a33ee1196",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Roma",
+    "dimensions": [
+      {
+        "geo": "Roma"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y40-44"
+      },
+      {
+        "year": "2015"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 178695,
+    "timestamp": "2025-11-10T11:05:07.836949",
+    "smartKeys": [
+      "Roma",
+      "2015",
+      "Total",
+      "Y40-44"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=ROM&age=Y40-44&sex=T&year=2015",
+    "meta": {
+      "quality": "Estimated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "793ba391-acf7-4026-9ed1-c90a3da93ef8",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Valencia",
+    "dimensions": [
+      {
+        "geo": "Valencia"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y5-9"
+      },
+      {
+        "year": "2018"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1137643,
+    "timestamp": "2025-05-02T11:05:07.836990",
+    "smartKeys": [
+      "Valencia",
+      "2018",
+      "Male",
+      "Y5-9"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=VAL&age=Y5-9&sex=M&year=2018",
+    "meta": {
+      "quality": "Estimated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "3adc1dd6-1f6f-40f9-93ac-b3e3a978e1e1",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Vilnius",
+    "dimensions": [
+      {
+        "geo": "Vilnius"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y5-9"
+      },
+      {
+        "year": "2023"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1353446,
+    "timestamp": "2025-08-26T11:05:07.837041",
+    "smartKeys": [
+      "Vilnius",
+      "2023",
+      "Male",
+      "Y5-9"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=VIL&age=Y5-9&sex=M&year=2023",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "5e504cbd-7830-4596-9b45-895faec353d1",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Athina",
+    "dimensions": [
+      {
+        "geo": "Athina"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y40-44"
+      },
+      {
+        "year": "2019"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 129208,
+    "timestamp": "2025-07-15T11:05:07.837083",
+    "smartKeys": [
+      "Athina",
+      "2019",
+      "Total",
+      "Y40-44"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=ATH&age=Y40-44&sex=T&year=2019"
+  },
+  {
+    "id": "678b9804-351c-4ad2-aa81-41f44f466330",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Torino",
+    "dimensions": [
+      {
+        "geo": "Torino"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y70-74"
+      },
+      {
+        "year": "2015"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 45326,
+    "timestamp": "2024-11-13T11:05:07.837108",
+    "smartKeys": [
+      "Torino",
+      "2015",
+      "Female",
+      "Y70-74"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=TOR&age=Y70-74&sex=F&year=2015",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "id": "8be44efd-c5cf-4a35-9528-6e27be485369",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Wien",
+    "dimensions": [
+      {
+        "geo": "Wien"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y50-54"
+      },
+      {
+        "year": "2025"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1670857,
+    "timestamp": "2025-06-08T11:05:07.837279",
+    "smartKeys": [
+      "Wien",
+      "2025",
+      "Female",
+      "Y50-54"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=WIE&age=Y50-54&sex=F&year=2025",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "3e71ce44-50cb-427b-a8d4-0f98b63f5503",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Berlin",
+    "dimensions": [
+      {
+        "geo": "Berlin"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y50-54"
+      },
+      {
+        "year": "2019"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 537537,
+    "timestamp": "2025-04-04T11:05:07.837328",
+    "smartKeys": [
+      "Berlin",
+      "2019",
+      "Total",
+      "Y50-54"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=BER&age=Y50-54&sex=T&year=2019"
+  },
+  {
+    "id": "325df920-817c-499b-838e-2c7a996f01c1",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Kaunas",
+    "dimensions": [
+      {
+        "geo": "Kaunas"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y35-39"
+      },
+      {
+        "year": "2016"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1069035,
+    "timestamp": "2025-05-03T11:05:07.837360",
+    "smartKeys": [
+      "Kaunas",
+      "2016",
+      "Male",
+      "Y35-39"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=KAU&age=Y35-39&sex=M&year=2016",
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "024eda7e-07ec-432f-9251-18760737edd9",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Athina",
+    "dimensions": [
+      {
+        "geo": "Athina"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Total"
+      },
+      {
+        "year": "2018"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1149438,
+    "timestamp": "2025-10-19T11:05:07.837397",
+    "smartKeys": [
+      "Athina",
+      "2018",
+      "Male",
+      "Total"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=ATH&age=Total&sex=M&year=2018",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "id": "e05add35-d793-40af-9cca-c3e82b008826",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Hamburg",
+    "dimensions": [
+      {
+        "geo": "Hamburg"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y_LT5"
+      },
+      {
+        "year": "2017"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1310218,
+    "timestamp": "2025-02-21T11:05:07.837450",
+    "smartKeys": [
+      "Hamburg",
+      "2017",
+      "Female",
+      "Y_LT5"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=HAM&age=Y_LT5&sex=F&year=2017"
+  },
+  {
+    "id": "15af9076-48e6-4596-bafa-165342c61e87",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Paris",
+    "dimensions": [
+      {
+        "geo": "Paris"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y10-14"
+      },
+      {
+        "year": "2016"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1238010,
+    "timestamp": "2025-09-23T11:05:07.837483",
+    "smartKeys": [
+      "Paris",
+      "2016",
+      "Total",
+      "Y10-14"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=PAR&age=Y10-14&sex=T&year=2016",
+    "meta": {
+      "quality": "Validated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "98beea4c-1ae4-4f25-9d73-63545c719642",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Athina",
+    "dimensions": [
+      {
+        "geo": "Athina"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y30-34"
+      },
+      {
+        "year": "2014"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 932637,
+    "timestamp": "2025-08-19T11:05:07.837502",
+    "smartKeys": [
+      "Athina",
+      "2014",
+      "Female",
+      "Y30-34"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=ATH&age=Y30-34&sex=F&year=2014",
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "a270f48b-6b38-47cd-8827-f9b755744c04",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Roma",
+    "dimensions": [
+      {
+        "geo": "Roma"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y5-9"
+      },
+      {
+        "year": "2011"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 476582,
+    "timestamp": "2024-12-22T11:05:07.837529",
+    "smartKeys": [
+      "Roma",
+      "2011",
+      "Male",
+      "Y5-9"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=ROM&age=Y5-9&sex=M&year=2011"
+  },
+  {
+    "id": "dd3f26fb-6699-4412-8ae4-77e399178af5",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Hamburg",
+    "dimensions": [
+      {
+        "geo": "Hamburg"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y65-69"
+      },
+      {
+        "year": "2011"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1192666,
+    "timestamp": "2025-08-22T11:05:07.837544",
+    "smartKeys": [
+      "Hamburg",
+      "2011",
+      "Female",
+      "Y65-69"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=HAM&age=Y65-69&sex=F&year=2011"
+  },
+  {
+    "id": "3df91b10-8147-457c-b6f7-5e6c01423035",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Bolzano",
+    "dimensions": [
+      {
+        "geo": "Bolzano"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y70-74"
+      },
+      {
+        "year": "2012"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1468471,
+    "timestamp": "2025-05-05T11:05:07.837559",
+    "smartKeys": [
+      "Bolzano",
+      "2012",
+      "Total",
+      "Y70-74"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=BOL&age=Y70-74&sex=T&year=2012"
+  },
+  {
+    "id": "0a167cbe-6b07-41ce-aa15-6b6269761bda",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Wien",
+    "dimensions": [
+      {
+        "geo": "Wien"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y_LT5"
+      },
+      {
+        "year": "2020"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 380234,
+    "timestamp": "2025-09-23T11:05:07.837575",
+    "smartKeys": [
+      "Wien",
+      "2020",
+      "Male",
+      "Y_LT5"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=WIE&age=Y_LT5&sex=M&year=2020"
+  },
+  {
+    "id": "e1d59c57-0d6d-4430-80e0-e4be90323eca",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Vilnius",
+    "dimensions": [
+      {
+        "geo": "Vilnius"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y80-84"
+      },
+      {
+        "year": "2013"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 454277,
+    "timestamp": "2025-02-20T11:05:07.837596",
+    "smartKeys": [
+      "Vilnius",
+      "2013",
+      "Female",
+      "Y80-84"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=VIL&age=Y80-84&sex=F&year=2013",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "id": "777dc26d-35b4-47f8-89d2-5a753d8a117a",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Madrid",
+    "dimensions": [
+      {
+        "geo": "Madrid"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y50-54"
+      },
+      {
+        "year": "2011"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1007539,
+    "timestamp": "2025-08-20T11:05:07.837649",
+    "smartKeys": [
+      "Madrid",
+      "2011",
+      "Female",
+      "Y50-54"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=MAD&age=Y50-54&sex=F&year=2011"
+  },
+  {
+    "id": "22bfab49-b85e-4dce-ac13-457308c8e964",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Lyon",
+    "dimensions": [
+      {
+        "geo": "Lyon"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y75-79"
+      },
+      {
+        "year": "2020"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 292667,
+    "timestamp": "2025-06-18T11:05:07.837690",
+    "smartKeys": [
+      "Lyon",
+      "2020",
+      "Male",
+      "Y75-79"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=LYO&age=Y75-79&sex=M&year=2020",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "496c00dd-b349-4696-aeb8-3e96a3686da2",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Lisboa",
+    "dimensions": [
+      {
+        "geo": "Lisboa"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y35-39"
+      },
+      {
+        "year": "2022"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1056382,
+    "timestamp": "2025-08-14T11:05:07.837720",
+    "smartKeys": [
+      "Lisboa",
+      "2022",
+      "Female",
+      "Y35-39"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=LIS&age=Y35-39&sex=F&year=2022"
+  },
+  {
+    "id": "365698fb-4646-466b-bb92-458c3c37ec9c",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Kaunas",
+    "dimensions": [
+      {
+        "geo": "Kaunas"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y55-59"
+      },
+      {
+        "year": "2022"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 569291,
+    "timestamp": "2025-03-16T11:05:07.837735",
+    "smartKeys": [
+      "Kaunas",
+      "2022",
+      "Female",
+      "Y55-59"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=KAU&age=Y55-59&sex=F&year=2022",
+    "meta": {
+      "quality": "Estimated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "df85e176-6fd3-4403-a0b0-d3ebe8470a61",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Roma",
+    "dimensions": [
+      {
+        "geo": "Roma"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y5-9"
+      },
+      {
+        "year": "2013"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1165588,
+    "timestamp": "2025-05-19T11:05:07.837751",
+    "smartKeys": [
+      "Roma",
+      "2013",
+      "Male",
+      "Y5-9"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=ROM&age=Y5-9&sex=M&year=2013",
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "c4383e07-baae-44cf-932e-3755e09aa796",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Valencia",
+    "dimensions": [
+      {
+        "geo": "Valencia"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y40-44"
+      },
+      {
+        "year": "2014"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1714754,
+    "timestamp": "2025-09-19T11:05:07.837765",
+    "smartKeys": [
+      "Valencia",
+      "2014",
+      "Male",
+      "Y40-44"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=VAL&age=Y40-44&sex=M&year=2014",
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "ddc81d2c-e60f-46c3-8913-46f82ff33cb9",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Kaunas",
+    "dimensions": [
+      {
+        "geo": "Kaunas"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y15-19"
+      },
+      {
+        "year": "2018"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1663648,
+    "timestamp": "2024-11-17T11:05:07.837794",
+    "smartKeys": [
+      "Kaunas",
+      "2018",
+      "Total",
+      "Y15-19"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=KAU&age=Y15-19&sex=T&year=2018"
+  },
+  {
+    "id": "7fed2bf9-9d31-4105-b575-65affc339c1f",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Bolzano",
+    "dimensions": [
+      {
+        "geo": "Bolzano"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Total"
+      },
+      {
+        "year": "2025"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1353692,
+    "timestamp": "2025-07-27T11:05:07.837821",
+    "smartKeys": [
+      "Bolzano",
+      "2025",
+      "Male",
+      "Total"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=BOL&age=Total&sex=M&year=2025",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "e4da042a-4c8c-4cf2-bcbe-0d135c367e03",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Hamburg",
+    "dimensions": [
+      {
+        "geo": "Hamburg"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y80-84"
+      },
+      {
+        "year": "2022"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1726277,
+    "timestamp": "2025-10-23T11:05:07.837837",
+    "smartKeys": [
+      "Hamburg",
+      "2022",
+      "Female",
+      "Y80-84"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=HAM&age=Y80-84&sex=F&year=2022",
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "0b1d6400-101f-4b4f-93eb-b93c93932979",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Lisboa",
+    "dimensions": [
+      {
+        "geo": "Lisboa"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y85-89"
+      },
+      {
+        "year": "2015"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1552323,
+    "timestamp": "2024-11-29T11:05:07.837853",
+    "smartKeys": [
+      "Lisboa",
+      "2015",
+      "Total",
+      "Y85-89"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=LIS&age=Y85-89&sex=T&year=2015",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "id": "7cbd4a1e-3512-4f71-b818-1cd5de64722e",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Lisboa",
+    "dimensions": [
+      {
+        "geo": "Lisboa"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y30-34"
+      },
+      {
+        "year": "2025"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 442903,
+    "timestamp": "2025-08-24T11:05:07.837868",
+    "smartKeys": [
+      "Lisboa",
+      "2025",
+      "Female",
+      "Y30-34"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=LIS&age=Y30-34&sex=F&year=2025",
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "5414f153-037d-47ae-ae19-7d45556ff71e",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Roma",
+    "dimensions": [
+      {
+        "geo": "Roma"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y65-69"
+      },
+      {
+        "year": "2018"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1689329,
+    "timestamp": "2025-06-29T11:05:07.837885",
+    "smartKeys": [
+      "Roma",
+      "2018",
+      "Total",
+      "Y65-69"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=ROM&age=Y65-69&sex=T&year=2018",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "d53a6049-eb0a-4578-86ce-e5193466d234",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Lyon",
+    "dimensions": [
+      {
+        "geo": "Lyon"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y75-79"
+      },
+      {
+        "year": "2010"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1699010,
+    "timestamp": "2025-09-04T11:05:07.837902",
+    "smartKeys": [
+      "Lyon",
+      "2010",
+      "Female",
+      "Y75-79"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=LYO&age=Y75-79&sex=F&year=2010"
+  },
+  {
+    "id": "678d0b5e-05c4-4593-8f89-05dfa4c04783",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Wien",
+    "dimensions": [
+      {
+        "geo": "Wien"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y70-74"
+      },
+      {
+        "year": "2023"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 254529,
+    "timestamp": "2025-05-05T11:05:07.837916",
+    "smartKeys": [
+      "Wien",
+      "2023",
+      "Total",
+      "Y70-74"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=WIE&age=Y70-74&sex=T&year=2023",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "id": "d41d7efd-57d1-45fa-a62a-19ebd151ce52",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Milano",
+    "dimensions": [
+      {
+        "geo": "Milano"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y40-44"
+      },
+      {
+        "year": "2012"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 502975,
+    "timestamp": "2024-12-26T11:05:07.837933",
+    "smartKeys": [
+      "Milano",
+      "2012",
+      "Total",
+      "Y40-44"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=MIL&age=Y40-44&sex=T&year=2012"
+  },
+  {
+    "id": "9738db72-1075-4d8e-b69b-9bee8c4930a9",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Vilnius",
+    "dimensions": [
+      {
+        "geo": "Vilnius"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Total"
+      },
+      {
+        "year": "2018"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 914077,
+    "timestamp": "2025-02-16T11:05:07.837952",
+    "smartKeys": [
+      "Vilnius",
+      "2018",
+      "Total",
+      "Total"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=VIL&age=Total&sex=T&year=2018",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "0f83e232-ff33-4ebb-a34f-df16e48cf420",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Milano",
+    "dimensions": [
+      {
+        "geo": "Milano"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y65-69"
+      },
+      {
+        "year": "2015"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1713745,
+    "timestamp": "2025-06-02T11:05:07.837987",
+    "smartKeys": [
+      "Milano",
+      "2015",
+      "Total",
+      "Y65-69"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=MIL&age=Y65-69&sex=T&year=2015",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "411a0722-941f-425e-b742-29936c517226",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Porto",
+    "dimensions": [
+      {
+        "geo": "Porto"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y_LT5"
+      },
+      {
+        "year": "2010"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1614721,
+    "timestamp": "2025-01-12T11:05:07.838023",
+    "smartKeys": [
+      "Porto",
+      "2010",
+      "Total",
+      "Y_LT5"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=POR&age=Y_LT5&sex=T&year=2010"
+  },
+  {
+    "id": "f2b98504-584f-49bf-a490-a6252690ee24",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Madrid",
+    "dimensions": [
+      {
+        "geo": "Madrid"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y75-79"
+      },
+      {
+        "year": "2015"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1086646,
+    "timestamp": "2025-11-11T11:05:07.838049",
+    "smartKeys": [
+      "Madrid",
+      "2015",
+      "Male",
+      "Y75-79"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=MAD&age=Y75-79&sex=M&year=2015",
+    "meta": {
+      "quality": "Estimated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "72a16f35-dec7-49d0-9125-d52a56823c4b",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Torino",
+    "dimensions": [
+      {
+        "geo": "Torino"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y20-24"
+      },
+      {
+        "year": "2010"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 624706,
+    "timestamp": "2025-11-08T11:05:07.838065",
+    "smartKeys": [
+      "Torino",
+      "2010",
+      "Male",
+      "Y20-24"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=TOR&age=Y20-24&sex=M&year=2010"
+  },
+  {
+    "id": "37f5e89b-3ecb-48f5-872b-52fb754e2cbb",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Palermo",
+    "dimensions": [
+      {
+        "geo": "Palermo"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y55-59"
+      },
+      {
+        "year": "2018"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 535511,
+    "timestamp": "2024-12-12T11:05:07.838082",
+    "smartKeys": [
+      "Palermo",
+      "2018",
+      "Total",
+      "Y55-59"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=PAL&age=Y55-59&sex=T&year=2018"
+  },
+  {
+    "id": "8be9d06a-49d8-4d85-8fe0-a643c619b3e3",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Valencia",
+    "dimensions": [
+      {
+        "geo": "Valencia"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y80-84"
+      },
+      {
+        "year": "2025"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1563421,
+    "timestamp": "2025-06-01T11:05:07.838096",
+    "smartKeys": [
+      "Valencia",
+      "2025",
+      "Male",
+      "Y80-84"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=VAL&age=Y80-84&sex=M&year=2025",
+    "meta": {
+      "quality": "Provisional"
+    }
+  },
+  {
+    "id": "1c2e40b4-fae5-4723-bcee-fb5ce81c7f25",
+    "source": "ESTAT2",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Trento",
+    "dimensions": [
+      {
+        "geo": "Trento"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y5-9"
+      },
+      {
+        "year": "2023"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 370395,
+    "timestamp": "2024-12-17T11:05:07.838110",
+    "smartKeys": [
+      "Trento",
+      "2023",
+      "Total",
+      "Y5-9"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=TRE&age=Y5-9&sex=T&year=2023",
+    "meta": {
+      "quality": "Validated"
+    },
+    "updateFrequency": "Annual"
+  },
+  {
+    "id": "940134e4-4a26-4227-9803-14205d364ff8",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Bolzano",
+    "dimensions": [
+      {
+        "geo": "Bolzano"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y30-34"
+      },
+      {
+        "year": "2023"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1563843,
+    "timestamp": "2025-05-19T11:05:07.838125",
+    "smartKeys": [
+      "Bolzano",
+      "2023",
+      "Male",
+      "Y30-34"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=BOL&age=Y30-34&sex=M&year=2023",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "beba4f1b-2523-4ca5-b0da-7fc09935b50f",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Lyon",
+    "dimensions": [
+      {
+        "geo": "Lyon"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y70-74"
+      },
+      {
+        "year": "2014"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 88625,
+    "timestamp": "2025-01-10T11:05:07.838139",
+    "smartKeys": [
+      "Lyon",
+      "2014",
+      "Total",
+      "Y70-74"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=LYO&age=Y70-74&sex=T&year=2014",
+    "meta": {
+      "quality": "Provisional"
+    }
+  },
+  {
+    "id": "e8061847-96f5-4e0a-924b-ecab6586ea73",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Torino",
+    "dimensions": [
+      {
+        "geo": "Torino"
+      },
+      {
+        "sex": "Male"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y80-84"
+      },
+      {
+        "year": "2010"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 1422075,
+    "timestamp": "2025-08-03T11:05:07.838155",
+    "smartKeys": [
+      "Torino",
+      "2010",
+      "Male",
+      "Y80-84"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=TOR&age=Y80-84&sex=M&year=2010",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "id": "8772e8e8-d41b-4c64-b526-b214aa16ef1c",
+    "source": "ESTAT1",
+    "survey": "demo_r_pjangrp15",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Vilnius",
+    "dimensions": [
+      {
+        "geo": "Vilnius"
+      },
+      {
+        "sex": "Female"
+      },
+      {
+        "unit": "Persons"
+      },
+      {
+        "age": "Y10-14"
+      },
+      {
+        "year": "2010"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Yearly",
+    "value": 944536,
+    "timestamp": "2025-03-12T11:05:07.838171",
+    "smartKeys": [
+      "Vilnius",
+      "2010",
+      "Female",
+      "Y10-14"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp15"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp15?geo=VIL&age=Y10-14&sex=F&year=2010",
+    "meta": {
+      "quality": "Estimated"
+    }
+  },
+  {
+    "id": "afbf3903-726f-46a6-8eee-9ea909abf959",
+    "source": "ESTAT3",
+    "survey": "demo_r_pjangrp3",
+    "surveyName": "Population on 1 January by age group, sex and region",
+    "region": "NUTS13",
+    "surveyData": "Population dataset for Vilnius",
+    "dimensions": [
+      {
+        "geo": "Vilnius"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Number"
+      },
+      {
+        "age": "Y35-39"
+      },
+      {
+        "year": "2025"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "aggregationPeriod": "Annual",
+    "value": 1196104,
+    "timestamp": "2025-08-01T11:05:07.838192",
+    "smartKeys": [
+      "Vilnius",
+      "2025",
+      "Total",
+      "Y35-39"
+    ],
+    "references": [
+      "Eurostat",
+      "demo_r_pjangrp3"
+    ],
+    "fromUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_r_pjangrp3?geo=VIL&age=Y35-39&sex=T&year=2025",
+    "meta": {
+      "quality": "Validated"
+    }
+  },
+  {
+    "region": "NUTS3",
+    "source": "ESTAT",
+    "timestamp": "2025-10-07T08:27:18.009Z",
+    "survey": "nama_10r_3gdp",
+    "dimensions": [
+      {
+        "geo": "Lovech"
+      },
+      {
+        "sex": "Total"
+      },
+      {
+        "unit": "Euro per inhabitant"
+      },
+      {
+        "age": "Y35-39"
+      },
+      {
+        "year": "2000"
+      },
+      {
+        "frequency": "Annual"
+      }
+    ],
+    "value": 1500
+  }
+]
