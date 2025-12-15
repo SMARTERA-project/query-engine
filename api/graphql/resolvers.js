@@ -11,7 +11,7 @@ const resolvers = {
     source: async (parent, { id }) => {
       return await Source.findById(id)
     },
-
+/*
     datapoints: async (_parent, args, { db }) => {
       const {
         survey,
@@ -228,219 +228,8 @@ const resolvers = {
       const datapoints = await Datapoint.aggregate(pipeline).exec()
       return datapoints
     },
-
-    datapointsV3: async (_parent, args, { db }) => {
-      const {
-        survey,
-        source,
-        region,
-        sortBy = [],
-        sortOrder = 'ASC',
-        dimensions = [],
-        exclude = [],
-        filterBy,
-        filter = [],
-        limit
-      } = args
-
-      // Cache per le chiavi delle dimensioni (potrebbe essere spostata fuori dalla funzione)
-      let dimensionKeysCache = null
-
-      // Funzione helper per estrarre chiavi dimensioni
-      const getDimensionKeys = async () => {
-        if (dimensionKeysCache) return dimensionKeysCache
-
-        const sampleDatapoints = await Datapoint.find({ survey })
-          .limit(50)
-          .select('dimensions')
-          .lean()
-          .exec()
-
-        dimensionKeysCache = [
-          ...new Set(
-            sampleDatapoints.flatMap(doc =>
-              Array.isArray(doc.dimensions)
-                ? doc.dimensions.flatMap(d => Object.keys(d))
-                : []
-            )
-          )
-        ]
-
-        return dimensionKeysCache
-      }
-
-      // Costruzione query MongoDB
-      const query = { survey }
-      const andClauses = []
-
-      if (source) query.source = source
-      if (region) query.region = region
-
-      // Ottieni le chiavi dimensioni
-      const dimensionKeys = await getDimensionKeys()
-
-      // Filtro inclusione dimensioni
-      if (dimensions.length > 0 && dimensionKeys.length > 0) {
-        dimensions.forEach(value => {
-          andClauses.push({
-            dimensions: {
-              $elemMatch: {
-                $or: dimensionKeys.map(k => ({ [k]: value }))
-              }
-            }
-          })
-        })
-      }
-
-      // Filtro esclusione dimensioni
-      if (exclude.length > 0 && dimensionKeys.length > 0) {
-        exclude.forEach(value => {
-          andClauses.push({
-            dimensions: {
-              $not: {
-                $elemMatch: {
-                  $or: dimensionKeys.map(k => ({ [k]: value }))
-                }
-              }
-            }
-          })
-        })
-      }
-
-      // Filtro per dimensione specifica (filterBy index)
-      if (typeof filterBy === 'number' && filter.length > 0) {
-        const sampleDoc = await Datapoint.findOne({ survey })
-          .select('dimensions')
-          .lean()
-          .exec()
-
-        const dimensionObj = sampleDoc?.dimensions?.[filterBy]
-
-        if (dimensionObj) {
-          const [dimensionKey] = Object.keys(dimensionObj)
-          const filterValues = filter.map(v => {
-            const num = Number(v)
-            return isNaN(num) ? v : num
-          })
-
-          andClauses.push({
-            dimensions: {
-              $elemMatch: {
-                [dimensionKey]: { $in: filterValues }
-              }
-            }
-          })
-        }
-      }
-
-      if (andClauses.length > 0) query.$and = andClauses
-
-      // Pipeline di aggregazione
-      const pipeline = [
-        { $match: query },
-        {
-          $lookup: {
-            from: 'sources',
-            localField: 'source',
-            foreignField: '_id',
-            as: 'sourceData'
-          }
-        },
-        {
-          $unwind: {
-            path: '$sourceData',
-            preserveNullAndEmptyArrays: true
-          }
-        }
-      ]
-
-      // Ordinamento
-      if (sortBy.length > 0) {
-        const sortByArray = Array.isArray(sortBy) ? sortBy : [sortBy]
-        const sortOrderArray = Array.isArray(sortOrder)
-          ? sortOrder
-          : [sortOrder]
-
-        const addFieldsStage = {}
-        const sortStage = {}
-
-        sortByArray.forEach((field, i) => {
-          const order = sortOrderArray[i]?.toUpperCase() === 'DESC' ? -1 : 1
-
-          if (dimensionKeys.includes(field)) {
-            addFieldsStage[`sort_${field}`] = {
-              $first: {
-                $map: {
-                  input: {
-                    $filter: {
-                      input: '$dimensions',
-                      as: 'dim',
-                      cond: {
-                        $gt: [{ $type: `$$dim.${field}` }, 'missing']
-                      }
-                    }
-                  },
-                  as: 'dim',
-                  in: `$$dim.${field}`
-                }
-              }
-            }
-            sortStage[`sort_${field}`] = order
-          } else {
-            // Campo diretto (value, timestamp, ecc.)
-            sortStage[field] = order
-          }
-        })
-
-        if (Object.keys(addFieldsStage).length > 0) {
-          pipeline.push({ $addFields: addFieldsStage })
-        }
-        pipeline.push({ $sort: sortStage })
-      }
-
-      if (limit && Number.isInteger(limit) && limit > 0) {
-        pipeline.push({ $limit: limit })
-      }
-
-      // Proiezione finale con dati arricchiti
-      pipeline.push({
-        $project: {
-          _id: 1,
-          region: 1,
-          source: 1,
-          timestamp: 1,
-          survey: 1,
-          surveyName: 1,
-          value: 1,
-          sourceId: 1,
-          fromUrl: 1,
-          name: 1,
-          record: 1,
-          dimensions: {
-            $map: {
-              input: '$dimensions',
-              as: 'd',
-              in: {
-                $first: {
-                  $map: {
-                    input: { $objectToArray: '$$d' },
-                    as: 'pair',
-                    in: '$$pair.v'
-                  }
-                }
-              }
-            }
-          }
-        }
-      })
-
-      console.log('MongoDB Query:', JSON.stringify(pipeline, null, 2))
-
-      const datapoints = await Datapoint.aggregate(pipeline).exec()
-      return datapoints
-    },
-
-    datapointsV4: async (_parent, args, { db }) => {
+*/
+    datapoints: async (_parent, args, { db }) => {
       // Estrai tutti gli argomenti di "controllo" che hanno una logica speciale.
       const {
         sortBy = [],
@@ -457,7 +246,6 @@ const resolvers = {
 
       const query = { ...otherFilters } // query ora è { survey: '...', region: '...', altro: '...' }
 
-      // Controllo di sicurezza: La logica per 'dimensions' e 'filterBy'
       if (!query.survey) {
         throw new Error(
           'Il parametro "survey" è obbligatorio per questa query.'
@@ -469,7 +257,6 @@ const resolvers = {
       const getDimensionKeys = async () => {
         if (dimensionKeysCache) return dimensionKeysCache
 
-        // Dobbiamo usare 'query.survey' perché 'survey' non è più una variabile a sé stante.
         const sampleDatapoints = await Datapoint.find({ survey: query.survey })
           .limit(50)
           .select('dimensions')
@@ -626,11 +413,13 @@ const resolvers = {
           surveyName: 1,
           surveyData: 1,
           region: 1,
-          dimensions: [
-            {
-              $mergeObjects: '$dimensions'
+          dimensions: {
+            $map: {
+              input: { $objectToArray: { $mergeObjects: '$dimensions' } },
+              as: 'dim',
+              in: '$$dim.v'
             }
-          ],
+          },
           aggregationPeriod: 1,
           value: 1,
           timestamp: 1,

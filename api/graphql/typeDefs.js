@@ -1,38 +1,7 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
-  #type Geojson {
-  #    type: String!
-  #    coordinates: [[Float]]
-  #}
-
-  #type Record {
-  #    eventVersion: String
-  #    eventSource: String
-  #    awsRegion: String
-  #    eventTime: String
-  #    eventName: String
-  #    userIdentity: UserIdentity
-  #    requestParameters: RequestParameters
-  #    responseElements: ResponseElements
-  #    s3: S3
-  #    source: String
-  #    insertedBy: String
-  #}
-
-  #input RecordInput {
-  #    eventVersion: String
-  #    eventSource: String
-  #    awsRegion: String
-  #    eventTime: String
-  #    eventName: String
-  #    userIdentity: UserIdentity
-  #    requestParameters: RequestParameters
-  #    responseElements: ResponseElements
-  #    s3: S3
-  #    source: String
-  #    insertedBy: String
-  #}
+  
 
   type Data {
     datapoints: [DataPoint!]!
@@ -41,55 +10,38 @@ const typeDefs = gql`
   type Source {
     id: ID!
     name: String!
-    #    record: Record
-    #    json: [Geojson!]!
     data: Data
   }
 
+#  type DataPoint {
+#    id: ID!
+#    region: String!
+#    source: String!
+#    timestamp: String!
+#    survey: String!
+#    dimensions: [String!]!
+#    value: Float!
+#  }
+
+#  type DataPointV2 {
+#    source: String
+#    survey: String
+#    surveyName: String
+#    region: String
+#    fromUrl: String
+#    timestamp: String
+#    dimensions: [String]
+#    value: Float
+#  }
+
   type DataPoint {
-    id: ID!
-    region: String!
-    source: String!
-    timestamp: String!
-    survey: String!
-    dimensions: [String!]!
-    value: Float!
-  }
-
-  type DataPointV2 {
-    source: String
-    survey: String
-    surveyName: String
-    region: String
-    fromUrl: String
-    timestamp: String
-    dimensions: [String]
-    value: Float
-  }
-
-  type DataPointV3 {
-    _id: String
-    sourceId: String
-    name: String
-    record: String
-    survey: String
-    surveyName: String
-    region: String
-    source: String
-    timestamp: String
-    value: Float
-    dimensions: [String],
-    fromUrl: String
-  }
-
-  type DataPointV4 {
     _id: String
     source: String
     survey: String
     surveyName: String
     surveyData: String
     region: String
-    dimensions: [Dimension!]
+    dimensions: [String]
     aggregationPeriod: String
     value: Float
     timestamp: String
@@ -100,15 +52,6 @@ const typeDefs = gql`
     updateFrequency: String
   }
 
-  type Dimension {
-    geo: String
-    sex: String
-    unit: String
-    age: String
-    year: String
-    frequency: String
-  }
-
   type Meta {
     quality: String
   }
@@ -116,40 +59,29 @@ const typeDefs = gql`
   type Query {
     sources: [Source]
     source(id: ID!): Source
+
+#    datapoints(
+#      survey: String!
+#      sortBy: [String!]
+#      sortOrder: String!
+#      dimensions: [String!]!
+#      limit: Int
+#    ): [DataPoint!]!
+
+#    datapointsV2(
+#      source: String
+#      survey: String
+#      dimensions: [String!]
+#      region: String
+#      sortBy: [String!]
+#      sortOrder: [String!]
+#      limit: Int
+#      exclude: [String!]
+#      filterBy: Int
+#      filter: [String!]
+#    ): [DataPointV2]
+
     datapoints(
-      survey: String!
-      sortBy: [String!]
-      sortOrder: String!
-      dimensions: [String!]!
-      limit: Int
-    ): [DataPoint!]!
-    datapointsV2(
-      source: String
-      survey: String
-      dimensions: [String!]
-      region: String
-      sortBy: [String!]
-      sortOrder: [String!]
-      limit: Int
-      exclude: [String!]
-      filterBy: Int
-      filter: [String!]
-    ): [DataPointV2]
-
-    datapointsV3(
-      survey: String
-      source: String
-      region: String
-      dimensions: [String]
-      exclude: [String]
-      filterBy: Int
-      filter: [String]
-      sortBy: [String]
-      sortOrder: [String]
-      limit: Int
-    ): [DataPointV3!]!
-
-    datapointsV4(
       survey: String
       source: String
       region: String
@@ -167,7 +99,16 @@ const typeDefs = gql`
       sortOrder: [String]
       limit: Int
       lang: String
-    ): [DataPointV4!]!
+    ): [DataPoint!]!
+  }
+
+  type Dimension {
+    geo: String
+    sex: String
+    unit: String
+    age: String
+    year: String
+    frequency: String
   }
 
   type Mutation {
