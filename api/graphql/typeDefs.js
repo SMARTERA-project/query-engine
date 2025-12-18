@@ -44,6 +44,7 @@ const typeDefs = gql`
     dimensions: [String]
     aggregationPeriod: String
     value: Float
+    exclude: [String]
     timestamp: String
     smartKeys: [String]
     references: [String]
@@ -97,6 +98,8 @@ const typeDefs = gql`
       filter: [String]
       sortBy: [String]
       sortOrder: [String]
+      timestamp: String
+      value: Float
       limit: Int
       lang: String
     ): [DataPoint!]!
