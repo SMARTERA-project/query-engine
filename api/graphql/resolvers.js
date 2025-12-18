@@ -257,7 +257,6 @@ const resolvers = {
         if (dimensionKeysCache) return dimensionKeysCache
 
         const sampleDatapoints = await Datapoint.find({ survey: query.survey })
-          .limit(50)
           .select('dimensions')
           .lean()
           .exec()
@@ -306,6 +305,7 @@ const resolvers = {
       }
 
       // Filtro esclusione dimensioni
+      /*
       if (exclude.length > 0 && dimensionKeys.length > 0) {
         exclude.forEach(value => {
           // Condizione per array format
@@ -331,6 +331,7 @@ const resolvers = {
           })
         })
       }
+        */
 
       // Filtro per dimensione specifica (filterBy index)
       if (typeof filterBy === 'number' && filter.length > 0) {
@@ -401,6 +402,34 @@ const resolvers = {
           }
         }
       ]
+
+      // --- LOGICA EXCLUDE ---
+      if (exclude.length > 0) {
+        pipeline.push(
+          {
+            $addFields: {
+              _tempValuesToCheck: {
+                $map: {
+                  // mergeObjects unifica sia se 'dimensions' è un array di oggetti, sia se è un oggetto singolo
+                  input: { $objectToArray: { $mergeObjects: '$dimensions' } },
+                  as: 'dim',
+                  in: '$$dim.v' 
+                }
+              }
+            }
+          },
+          {
+            $match: {
+              _tempValuesToCheck: {
+                $nin: exclude // $nin esclude il documento se UNO QUALSIASI dei valori combacia
+              }
+            }
+          },
+          {
+            $unset: '_tempValuesToCheck'
+          }
+        )
+      }
 
       // Ordinamento
       if (sortBy.length > 0) {
