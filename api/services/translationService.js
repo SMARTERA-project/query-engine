@@ -144,26 +144,28 @@ async function translateDataPoint (dp, targetLang) {
 /**
  * Translate array of datapoints with parallelization but respecting API latencies.
  */
-async function translateDataPointsBatch(dataPoints, targetLang) {
+async function translateDataPointsBatch (dataPoints, targetLang) {
   if (!targetLang || targetLang.toLowerCase() === 'en') return dataPoints
-  
+
   const unique = new Map()
-  
+
   // Controlla se un valore è un tipo speciale MongoDB
-  function isMongoType(item) {
-    return Buffer.isBuffer(item) || 
-           item?.constructor?.name === 'ObjectID' ||
-           item?.constructor?.name === 'ObjectId'
+  function isMongoType (item) {
+    return (
+      Buffer.isBuffer(item) ||
+      item?.constructor?.name === 'ObjectID' ||
+      item?.constructor?.name === 'ObjectId'
+    )
   }
-  
-  function normalizeMongoValue(item) {
+
+  function normalizeMongoValue (item) {
     if (isMongoType(item)) {
       return item.toString()
     }
     return item
   }
-  
-  function collectStrings(item, visited) {
+
+  function collectStrings (item, visited) {
     // Gestione tipi primitivi
     if (!item || typeof item !== 'object') {
       if (typeof item === 'string' && item.trim().length > 0) {
@@ -171,41 +173,47 @@ async function translateDataPointsBatch(dataPoints, targetLang) {
       }
       return
     }
-    
+
     if (isMongoType(item)) return
-    
+
     // Protezione riferimenti circolari
     if (visited.has(item)) return
     visited.add(item)
-    
+
     for (const key in item) {
       if (Object.prototype.hasOwnProperty.call(item, key)) {
         collectStrings(item[key], visited)
       }
     }
   }
-  
+
   // Raccolta stringhe da tradurre
   for (const dp of dataPoints) {
     collectStrings(dp, new Set())
   }
-  
+
   const entries = Array.from(unique.keys())
-  
+
   // Filtra stringhe vuote o non traducibili
-  const toTranslate = entries.filter(txt => 
-    txt && txt.trim().length > 0 && !/^[0-9\s\-_.:,]+$/.test(txt)
+  const toTranslate = entries.filter(
+    txt =>
+      txt &&
+      txt.trim().length > 0 &&
+      // Esclude stringhe di soli numeri/simboli (il tuo filtro originale)
+      !/^[0-9\s\-_.:,]+$/.test(txt) &&
+      // Esclude se la stringa è identica alla sua versione maiuscola
+      txt !== txt.toUpperCase()
   )
-  
+
   const translations = await Promise.all(
     toTranslate.map(txt => translateText(txt, targetLang))
   )
-  
+
   toTranslate.forEach((orig, i) => {
     unique.set(orig, translations[i])
   })
-  
-  function applyTranslationsRecursively(item, visited) {
+
+  function applyTranslationsRecursively (item, visited) {
     // Gestione tipi primitivi
     if (!item || typeof item !== 'object') {
       if (typeof item === 'string') {
@@ -213,19 +221,19 @@ async function translateDataPointsBatch(dataPoints, targetLang) {
       }
       return item
     }
-    
+
     if (isMongoType(item)) {
       return normalizeMongoValue(item)
     }
-    
+
     // Protezione riferimenti circolari
     if (visited.has(item)) return item
     visited.add(item)
-    
+
     if (Array.isArray(item)) {
       return item.map(el => applyTranslationsRecursively(el, visited))
     }
-    
+
     const newObj = {}
     for (const key in item) {
       if (Object.prototype.hasOwnProperty.call(item, key)) {
@@ -234,11 +242,10 @@ async function translateDataPointsBatch(dataPoints, targetLang) {
     }
     return newObj
   }
-  
+
   // Applica traduzioni e normalizzazioni
   return dataPoints.map(dp => applyTranslationsRecursively(dp, new Set()))
 }
-
 
 module.exports = {
   translateText,
